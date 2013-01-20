@@ -1,6 +1,6 @@
-(defproject org.clojars.pauld/slacker "0.8.6-SNAPSHOT"
+(defproject org.clojars.pauld/slacker "0.9.0-SNAPSHOT"
   :description "Transparent, non-invasive RPC by clojure and for clojure.
-                This fork adds TLS support."
+                This fork adds TLS support, server-shutdown."
   :url "http://github.com/sunng87/slacker"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
