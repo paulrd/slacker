@@ -215,4 +215,3 @@
   "Takes a link.core.Server object that is returned when the server is started,
    then stops the server"
   (stop-server server))
-
