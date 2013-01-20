@@ -29,7 +29,7 @@ source code.
 
 ### Leiningen
 
-    :dependencies [[slacker "0.8.5"]]
+    :dependencies [[slacker "0.9.0"]]
 
 ### Getting Started
 
@@ -245,6 +245,7 @@ second on this machine.
 ## Contributors
 
 * [lbt05](https://github.com/lbt05)
+* [johnchapin](https://github.com/johnchapin)
 
 ## License
 
