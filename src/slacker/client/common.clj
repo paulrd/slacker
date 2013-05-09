@@ -125,16 +125,20 @@
    "writeBufferLowWaterMark" 0xFFF ; 4kB
    "connectTimeoutMillis" 3000})
 
-
 (defonce request-map (atom {}));; shared between multiple connections
 (defonce transaction-id-counter (atom 0))
-(defonce slacker-client-factory
+(defonce slacker-client-factory 
   (let [handler (create-link-handler request-map)]
-    (tcp-client-factory handler
-                        :codec slacker-base-codec
-                        :tcp-options tcp-options)))
-(defn create-client [host port content-type ssl-context]
-  (let [client (tcp-client slacker-client-factory host port ssl-context)]
+    (atom (tcp-client-factory handler
+                              :codec slacker-base-codec
+                              :tcp-options tcp-options))))
+(defn create-client [host port content-type & {:keys [ssl-context]}]
+  (reset! slacker-client-factory
+          (tcp-client-factory handler
+                              :codec slacker-base-codec
+                              :tcp-options tcp-options
+                              :ssl-context ssl-context))
+  (let [client (tcp-client @slacker-client-factory host port)]
     (SlackerClient. client request-map transaction-id-counter content-type)))
 
 (defn invoke-slacker
