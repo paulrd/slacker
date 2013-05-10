@@ -16,6 +16,5 @@
                    :dependencies [[codox "0.6.1"]]}
              :1.3 {:dependencies [org.clojure/clojure "1.5.1"]}}
   :plugins [[lein-exec "0.2.0"]]
-  :warn-on-reflection true
   :aliases {"run-example-server" ["run" "-m" "slacker.example.server"]
             "run-example-client" ["run" "-m" "slacker.example.client"]})
