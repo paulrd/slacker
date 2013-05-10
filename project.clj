@@ -1,12 +1,12 @@
-(defproject org.clojars.pauld/slacker "0.9.0-SNAPSHOT"
+(defproject org.clojars.pauld/slacker "0.10.0-SNAPSHOT"
   :description "Transparent, non-invasive RPC by clojure and for clojure.
                 This fork adds TLS support, server-shutdown."
-  :url "http://github.com/sunng87/slacker"
+  :url "http://github.com/paulrd/slacker"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :min-lein-version "2.0.0"
-  :dependencies [[org.clojure/clojure "1.4.0"]
-                 [link "0.4.0"]
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.clojars.pauld/link "0.5.0-SNAPSHOT"]
                  [info.sunng/carbonite "0.2.3"]
                  [cheshire "4.0.3"]
                  [slingshot "0.10.3"]
@@ -14,10 +14,8 @@
                  [org.clojure/tools.logging "0.2.4"]]
   :profiles {:dev {:resource-paths ["examples"]
                    :dependencies [[codox "0.6.1"]]}
-             :1.3 {:dependencies [org.clojure/clojure "1.3.0"]}}
+             :1.3 {:dependencies [org.clojure/clojure "1.5.1"]}}
   :plugins [[lein-exec "0.2.0"]]
   :warn-on-reflection true
   :aliases {"run-example-server" ["run" "-m" "slacker.example.server"]
             "run-example-client" ["run" "-m" "slacker.example.client"]})
-
-

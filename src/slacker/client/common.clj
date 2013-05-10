@@ -105,7 +105,7 @@
                            (deliver (:promise callback) result)
                            (if-let [cb (:callback callback)]
                              (cb result))))
-                       ;; sync request need to decode ths message in 
+                       ;; sync request need to decode ths message in
                        ;; caller thread
                        (deliver (:promise callback) msg-body))))))
    (on-error [_ ^Exception exc]
@@ -118,7 +118,7 @@
                  (reset! rmap {}))
                (log/error exc "Unexpected error in event loop")))))
 
-(def tcp-options
+(def ^:dynamic *tcp-options*
   {"tcpNoDelay" true,
    "reuseAddress" true,
    "writeBufferHighWaterMark" 0xFFFF ; 65kB
@@ -127,16 +127,18 @@
 
 (defonce request-map (atom {}));; shared between multiple connections
 (defonce transaction-id-counter (atom 0))
-(defonce slacker-client-factory 
+
+(defonce slacker-client-factory
   (let [handler (create-link-handler request-map)]
     (atom (tcp-client-factory handler
                               :codec slacker-base-codec
-                              :tcp-options tcp-options))))
+                              :tcp-options *tcp-options*))))
+
 (defn create-client [host port content-type & {:keys [ssl-context]}]
   (reset! slacker-client-factory
           (tcp-client-factory handler
                               :codec slacker-base-codec
-                              :tcp-options tcp-options
+                              :tcp-options *tcp-options*
                               :ssl-context ssl-context))
   (let [client (tcp-client @slacker-client-factory host port)]
     (SlackerClient. client request-map transaction-id-counter content-type)))
@@ -166,4 +168,3 @@
   [connection-string]
   (let [[host port] (split connection-string #":")]
     [host (Integer/valueOf ^String port)]))
-
