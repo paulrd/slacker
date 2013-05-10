@@ -7,16 +7,12 @@
   "Create connection to a slacker server."
   [addr
    & {:keys [content-type ssl-context]
-      :or {content-type :carb
-           ssl-context nil}
-      :as _}]
+      :or {content-type :carb}}]
   (let [[host port] (host-port addr)]
-    (create-client host port content-type ssl-context)))
-
+    (create-client host port content-type :ssl-context ssl-context)))
 
 (defn close-slackerc [client]
   (close client))
-
 
 (defmacro defn-remote
   "Define a facade for remote function. You have to provide the
@@ -70,4 +66,3 @@
        (dorun (map defn-remote*
                    (repeat sc-sym)
                    (filter filter-fn all-functions))))))
-
