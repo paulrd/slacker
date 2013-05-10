@@ -136,7 +136,7 @@
 
 (defn create-client [host port content-type & {:keys [ssl-context]}]
   (reset! slacker-client-factory
-          (tcp-client-factory handler
+          (tcp-client-factory (create-link-handler request-map)
                               :codec slacker-base-codec
                               :tcp-options *tcp-options*
                               :ssl-context ssl-context))
