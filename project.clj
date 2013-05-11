@@ -1,4 +1,4 @@
-(defproject org.clojars.pauld/slacker "0.10.0-SNAPSHOT"
+(defproject cawala/slacker "0.10.0"
   :description "Transparent, non-invasive RPC by clojure and for clojure.
                 This fork adds TLS support, server-shutdown."
   :url "http://github.com/paulrd/slacker"
@@ -6,7 +6,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojars.pauld/link "0.5.0-SNAPSHOT"]
+                 [cawala/link "0.5.0"]
                  [info.sunng/carbonite "0.2.3"]
                  [cheshire "4.0.3"]
                  [slingshot "0.10.3"]
