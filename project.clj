@@ -1,4 +1,4 @@
-(defproject org.clojars.pauld/slacker "0.10.0-SNAPSHOT"
+(defproject cawala/slacker "0.10.0"
   :description "Transparent, non-invasive RPC by clojure and for clojure.
                 This fork adds TLS support, server-shutdown."
   :url "http://github.com/paulrd/slacker"
