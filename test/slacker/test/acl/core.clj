@@ -1,23 +1,20 @@
 (ns slacker.test.acl.core
-  (:use [clojure.test])
-  (:use [slacker.acl])
-  (:use [slacker.acl.core])
+  (:use clojure.test, slacker.acl, slacker.acl.core)
   (:import java.net.InetSocketAddress))
 
 (def client-info {:remote-addr (InetSocketAddress. "192.168.1.1" 9090)})
 (def other-client {:remote-addr (InetSocketAddress. "192.168.15.1" 9090)})
 (def another-client {:remote-addr (InetSocketAddress. "192.168.1.10" 9090)})
+
 (defrules myrules
   (deny ["192.168.1.10"])
   (allow ["192.168.1.*" "192.168.100.*"]))
-
 (defrules lightrules
   (deny :all)
   (allow :all))
 (defrules darkrules
   (deny ["192.168.1.10"])
   (allow ["192.168.1.10"]))
-
 (defrules emptyrules
   (deny ["192.168.1.10"]))
 

@@ -61,5 +61,6 @@
     (setAttribute [this attr])
     (setAttributes [this attrs])))
 
-(jmx/register-mbean stats-bean "slacker.server:type=FunctionCallStats")
-
+(try
+  (jmx/register-mbean stats-bean "slacker.server:type=FunctionCallStats")
+  (catch javax.management.InstanceAlreadyExistsException e))

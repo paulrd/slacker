@@ -59,5 +59,6 @@
     (setAttribute [this attr])
     (setAttributes [this attrs])))
 
-(jmx/register-mbean stats-bean "slacker.server:type=ExecTimeStats")
-  
+(try
+  (jmx/register-mbean stats-bean "slacker.server:type=ExecTimeStats")
+  (catch javax.management.InstanceAlreadyExistsException e))

@@ -1,7 +1,6 @@
 (ns slacker.test.server
-  (:use [slacker server serialization common])
-  (:use [clojure.test])
-  (:use [clojure.string :only [split]]))
+  (:use (slacker server serialization common)
+        (clojure test [string :only [split]])))
 
 (def funcs {"plus" + "minus" - "prod" * "div" /})
 (def params (serialize :carb [100 0]))
@@ -67,4 +66,3 @@
                 first)
         response (deserialize :clj result :string)]
     (= (map name (keys funcs)) response)))
-

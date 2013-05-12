@@ -1,6 +1,6 @@
 (ns slacker.client
-  (:use [slacker common])
-  (:use [slacker.client common])
+  (:use (slacker common))
+  (:use (slacker.client common))
   (:use [clojure.string :only [split]]))
 
 (defn slackerc

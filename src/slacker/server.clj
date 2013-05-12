@@ -1,9 +1,9 @@
 (ns slacker.server
   (:refer-clojure :exclude [send])
-  (:use [slacker common serialization protocol])
-  (:use [slacker.server http])
+  (:use (slacker common serialization protocol))
+  (:use (slacker.server http))
   (:use [slacker.acl.core])
-  (:use [link core tcp http])
+  (:use (link core tcp http))
   (:use [slingshot.slingshot :only [try+]])
   (:require [clojure.tools.logging :as log])
   (:import [java.util.concurrent Executors]))
@@ -43,7 +43,7 @@
                           :stacktrace (.getStackTrace ^Exception e)}))))
     req))
 
-(defn- serialize-result [req]    
+(defn- serialize-result [req]
   (if-not (nil? (:result req))
     (assoc req :result (serialize (:content-type req) (:result req)))
     req))
@@ -201,8 +201,8 @@
         handler (create-server-handler funcs interceptors acl)]
 
     (when *debug* (doseq [f (keys funcs)] (println f)))
-    
-    (tcp-server port handler 
+
+    (tcp-server port handler
                 :codec slacker-base-codec
                 :threaded? true
                 :ordered? false

@@ -13,8 +13,7 @@
                  [org.clojure/java.jmx "0.2.0"]
                  [org.clojure/tools.logging "0.2.4"]]
   :profiles {:dev {:resource-paths ["examples"]
-                   :dependencies [[codox "0.6.1"]]}
-             :1.3 {:dependencies [org.clojure/clojure "1.5.1"]}}
-  :plugins [[lein-exec "0.2.0"]]
+                   :dependencies [[codox "0.6.1"] [midje "1.6-SNAPSHOT"]]}}
+  :plugins [[lein-exec "0.3.0"]]
   :aliases {"run-example-server" ["run" "-m" "slacker.example.server"]
             "run-example-client" ["run" "-m" "slacker.example.client"]})

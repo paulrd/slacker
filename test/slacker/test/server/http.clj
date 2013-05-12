@@ -1,10 +1,10 @@
 (ns slacker.test.server.http
-  (:use clojure.test)
-  (:use [slacker.common :only [version]] )
-  (:use slacker.server.http)
-  (:use slacker.serialization)
+  (:use clojure.test
+        (slacker [common :only [version]]
+                 serialization)
+        slacker.server.http)
   (:require [clojure.java.io :as io])
-  (:import [java.io ByteArrayOutputStream]))
+  (:import (java.io ByteArrayOutputStream)))
 
 (defn make-fake-data-stream [string-data]
   (io/input-stream (.getBytes string-data "UTF-8")))
@@ -29,5 +29,3 @@
         resp (slacker-resp->ring-resp sresp)]
     (is (= 200 (:status resp)))
     (is (= "application/clj" (-> resp :headers (get "content-type"))))))
-
-
