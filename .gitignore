@@ -3,6 +3,7 @@ pom.xml
 /lib/
 /doc/
 /classes/
+checkouts
 .*
 target
 *#
