@@ -1,4 +1,4 @@
-(ns slacker.test.t-serialization
+(ns slacker.t-serialization
   (:use slacker.serialization, midje.sweet)
   (:import [java.util Arrays]))
 

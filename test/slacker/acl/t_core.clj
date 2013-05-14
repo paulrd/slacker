@@ -1,4 +1,4 @@
-(ns slacker.test.acl.core
+(ns slacker.acl.t-core
   (:use clojure.test, slacker.acl, slacker.acl.core)
   (:import java.net.InetSocketAddress))
 

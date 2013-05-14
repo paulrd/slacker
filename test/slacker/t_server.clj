@@ -1,4 +1,4 @@
-(ns slacker.test.server
+(ns slacker.t-server
   (:use (slacker server serialization common)
         (clojure test [string :only [split]])))
 

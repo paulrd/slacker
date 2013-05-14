@@ -1,4 +1,4 @@
-(ns slacker.test.server.http
+(ns slacker.server.t-http
   (:use clojure.test
         (slacker [common :only [version]]
                  serialization)
